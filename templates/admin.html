@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración - Mi Tienda</title>
+    <!-- Enlace a la hoja de estilos del panel de admin -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin-style.css') }}">
+    <link rel="icon" href="Admin.png" type="image/png">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <span class="logo">
+                <span class="logo-text">Panel Administrador</span>
+            </span>
+            <nav>
+                <ul>
+                    <li><a href="/">Ver Tienda</a></li>
+                    <li><button id="btn-logout" class="nav-button-logout">Cerrar Sesión</button></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="admin-page-main">
+        <div class="panel-grid-layout">
+            <section class="panel-column">
+                <h2>Agregar Nuevo Producto</h2>
+                <!-- Este es el formulario que admin.js controlará -->
+                <form id="form-agregar-producto">
+                    <div class="admin-form-group">
+                        <label for="nombre">Nombre del Producto</label>
+                        <input type="text" id="nombre" required>
+                    </div>
+                    <div class="admin-form-group">
+                        <label for="precio">Precio (ej: 1250.00)</label>
+                        <input type="number" id="precio" step="0.01" required>
+                    </div>
+                    <div class="admin-form-group">
+                        <label for="categoria">Categoría Principal</label>
+                        <select id="categoria" required>
+                            <option value="" disabled selected>Selecciona una categoría</option>
+                            <option value="Ropa">Ropa</option>
+                            <option value="Calzado">Calzado</option>
+                            <option value="Interiores">Interiores</option>
+                            <option value="Accesorios">Accesorios</option>
+                            <option value="Hogar">Hogar</option>
+                        </select>
+                    </div>
+                    <div class="admin-form-group">
+                        <label for="subcategoria">Subcategoría</label>
+                        <select id="subcategoria" required>
+                            <option value="Dama">Dama</option>
+                            <option value="Caballero">Caballero</option>
+                            <option value="Niño">Niño</option>
+                            <option value="Niña">Niña</option>
+                            <option value="N/A">No Aplica (para Hogar)</option>
+                        </select>
+                    </div>
+                    <div class="admin-form-group">
+                        <label>Foto del Producto</label>
+                        <input type="file" id="imagen" accept="image/*" required style="display: none">
+                        <label for="imagen" class="file-input-label-admin">Seleccionar Archivo</label>
+                        <span id="file-name" class="file-name-display">Ningún archivo seleccionado</span>
+                    </div>
+                    <button type="submit" class="btn-add-product">Agregar Producto</button>
+                </form>
+            </section>
+
+            <section class="panel-column">
+                <h2>Productos Existentes</h2>
+                <!-- Este contenedor será llenado por admin.js con la lista de productos -->
+                <div id="lista-productos-admin" class="admin-product-list">
+                    <p>Cargando productos...</p>
+                </div>
+            </section>
+        </div>
+    </main>
+    
+    <!-- Enlace al script que controla la lógica del panel -->
+    <script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+</body>
+</html>

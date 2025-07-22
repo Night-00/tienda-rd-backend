@@ -1,0 +1,17 @@
+# Entorno virtual de Python
+# Esta carpeta puede ser muy pesada y es específica de cada computadora.
+.venv/
+venv/
+
+# Archivos de caché de Python
+# Se generan automáticamente y no son necesarios en el repositorio.
+__pycache__/
+*.pyc
+
+# Base de datos de desarrollo
+# Es mejor que el servidor de producción cree su propia base de datos limpia.
+database.db
+
+# Archivos de configuración del editor VS Code
+# Son configuraciones personales y no deben estar en el repositorio.
+.vscode/
